@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3307:3306"
+    env_file:
+      - ./server/server.env
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server/uploads:/uploads
+    env_file:
+      - ./server/server.env
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+      - server
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

@@ -1,0 +1,33 @@
+{
+  "short_name": "DICOM App",
+  "name": "Application to view, upload and download DICOM images.",
+  "icons": [
+    {
+      "src": "brain_logo.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+
+	{
+		"src": "DICOM_logo.ico",
+		"sizes": "64x64 32x32 24x24 16x16",
+		"type": "image/x-icon"
+	},
+
+    {
+      "src": "brain_logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+
+    {
+      "src": "DICOM_logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
